@@ -5,11 +5,11 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/User', proxy('http://localhost:8000/'))
-app.use('/contentService', proxy('http://localhost:8001/'))
-app.use('/daily', proxy('http://localhost:8002/')) 
+app.use('/userService', proxy('https://microuser.herokuapp.com/'))
+app.use('/contentService', proxy('https://microcontent.herokuapp.com/'))
+app.use('/dailypassService', proxy('https://microdaily.herokuapp.com/')) 
 
 
-app.listen(8005, () => {
+app.listen(process.env.PORT || 8005, () => {
     console.log('Balancer is Listening to Port 8005')
 }) 
